@@ -94,30 +94,51 @@ public class MoneyTest
 	@Test
 	public void testAdd()
 	{
-		fail("Write test case here");
+		assertEquals(Integer.valueOf(150000*2), SEK100.add(SEK100).universalValue());
+		assertEquals(Integer.valueOf(150000*2), EUR10.add(EUR10).universalValue());
+		assertEquals(Integer.valueOf(300000*2), SEK200.add(SEK200).universalValue());
+		assertEquals(Integer.valueOf(300000*2), EUR20.add(EUR20).universalValue());
+		assertEquals(Integer.valueOf(0), SEK0.add(SEK0).universalValue());
+		assertEquals(Integer.valueOf(0), EUR0.add(EUR0).universalValue());
+		assertEquals(Integer.valueOf(-150000*2), SEKn100.add(SEKn100).universalValue());
 	}
 
 	@Test
 	public void testSub()
 	{
-		fail("Write test case here");
+		assertEquals(Integer.valueOf(0), SEK100.sub(SEK100).universalValue());
+		assertEquals(Integer.valueOf(0), EUR10.sub(EUR10).universalValue());
+		assertEquals(Integer.valueOf(0), SEK200.sub(SEK200).universalValue());
+		assertEquals(Integer.valueOf(0), EUR20.sub(EUR20).universalValue());
+		assertEquals(Integer.valueOf(0), SEK0.sub(SEK0).universalValue());
+		assertEquals(Integer.valueOf(0), EUR0.sub(EUR0).universalValue());
+		assertEquals(Integer.valueOf(0), SEKn100.sub(SEKn100).universalValue());
 	}
 
 	@Test
 	public void testIsZero()
 	{
-		fail("Write test case here");
+		assertTrue(SEK0.isZero());
+		assertFalse(SEKn100.isZero());
 	}
 
 	@Test
 	public void testNegate()
 	{
-		fail("Write test case here");
+		assertEquals(Integer.valueOf(-150000), SEK100.negate().universalValue());
+		assertEquals(Integer.valueOf(-150000), EUR10.negate().universalValue());
+		assertEquals(Integer.valueOf(-300000), SEK200.negate().universalValue());
+		assertEquals(Integer.valueOf(-300000), EUR20.negate().universalValue());
+		assertEquals(Integer.valueOf(0), SEK0.negate().universalValue());
+		assertEquals(Integer.valueOf(0), EUR0.negate().universalValue());
+		assertEquals(Integer.valueOf(150000), SEKn100.negate().universalValue());
 	}
 
 	@Test
 	public void testCompareTo()
 	{
-		fail("Write test case here");
+		assertEquals(0, SEK100.compareTo(EUR10));
+		assertEquals(1, SEK200.compareTo(SEK100));
+		assertEquals(-1, SEK100.compareTo(SEK200));
 	}
 }

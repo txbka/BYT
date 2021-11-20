@@ -40,7 +40,7 @@ public class Money implements Comparable {
 	 */
 	public String toString()
     {
-        return String.format("" + ((double)amount/100) + " " +  this.currency.getName());//{1}", (amount/100), this.currency.getName());
+        return String.format("" + ((double)amount/100) + " " +  this.currency.getName());
 	}
 
 	/**

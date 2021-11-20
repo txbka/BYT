@@ -50,7 +50,7 @@ public class Account {
 	public void tick() {
 		for (TimedPayment tp : timedpayments.values())
 		{
-			tp.tick(); tp.tick();
+			tp.tick();
 		}
 	}
 
@@ -90,7 +90,8 @@ public class Account {
 		private Bank tobank;
 		private String toaccount;
 
-		TimedPayment(Integer interval, Integer next, Money amount, Account fromaccount, Bank tobank, String toaccount) {
+		TimedPayment(Integer interval, Integer next, Money amount, Account fromaccount, Bank tobank, String toaccount)
+		{
 			this.interval = interval;
 			this.next = next;
 			this.amount = amount;
@@ -102,21 +103,25 @@ public class Account {
 		/* Return value indicates whether or not a transfer was initiated */
 		public Boolean tick()
         {
-			if (next == 0) {
+			if (next == 0)
+			{
 				next = interval;
 
 				fromaccount.withdraw(amount);
-				try {
+				try
+				{
 					tobank.deposit(toaccount, amount);
 				}
-				catch (AccountDoesNotExistException e) {
+				catch (AccountDoesNotExistException e)
+				{
 					/* Revert transfer.
 					 * In reality, this should probably cause a notification somewhere. */
 					fromaccount.deposit(amount);
 				}
 				return true;
 			}
-			else {
+			else
+			{
 				next--;
 				return false;
 			}
